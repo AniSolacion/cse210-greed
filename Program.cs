@@ -47,12 +47,12 @@ namespace Unit04
             cast.AddActor("banner", banner);
 
             // create the robot
-            Actor robot = new Actor();
-            robot.SetText("#");
-            robot.SetFontSize(FONT_SIZE);
-            robot.SetColor(WHITE);
-            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
-            cast.AddActor("robot", robot);
+            Actor player = new Player();
+            player.SetText("#");
+            player.SetFontSize(FONT_SIZE);
+            player.SetColor(WHITE);
+            player.SetPosition(new Point(MAX_X / 2, MAX_Y - 15));
+            cast.AddActor("player", player);
 
             // load the messages
             List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>();
@@ -65,7 +65,7 @@ namespace Unit04
                 string message = messages[i];
 
                 int x = random.Next(1, COLS);
-                int y = ROWS - 1;
+                int y = 15;
                 Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
@@ -81,7 +81,26 @@ namespace Unit04
                 gem.SetPosition(position);
                 cast.AddActor("artifacts", gem);
             }
+            for (int i = 0; i < MAX_ROCKS; i++)
+            {
+                string text = ((char)random.Next(33, 126)).ToString();
+                string message = messages[i];
 
+                int x = random.Next(1, COLS);
+                int y = 15;
+                Point position = new Point(x, y);
+                position = position.Scale(CELL_SIZE);
+
+                
+                Color color = new Color(98, 52, 0);
+
+                Gem rock = new Rock();
+                rock.SetText(text);
+                rock.SetFontSize(FONT_SIZE);
+                rock.SetColor(color);
+                rock.SetPosition(position);
+                cast.AddActor("artifacts", rock);
+            }
             // start the game
             KeyboardService keyboardService = new KeyboardService(CELL_SIZE);
             VideoService videoService 
