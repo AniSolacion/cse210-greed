@@ -1,6 +1,6 @@
-using System;
+using System;  
 
-namepsace Unit04.Game.Casting
+namespace Unit04.Game.Casting
 {
     public class Gem : Actor
     {
