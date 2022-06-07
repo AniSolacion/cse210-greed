@@ -16,6 +16,8 @@ namespace Unit04.Game.Directing
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
 
+        public Score score;
+
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
@@ -78,7 +80,7 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Gem gem = (Gem) actor;
-                    //get point function for rocks
+                    score.updateScore(gem.getScore());
                 }
             }
 
@@ -87,7 +89,7 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Rock rock = (Rock) actor;
-                    //get point function for rocks
+                    score.updateScore(rock.getScore());
                 }
             }
         }
