@@ -73,13 +73,21 @@ namespace Unit04.Game.Directing
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in gem)
+            foreach (Actor actor in gems)
             {
-                if (robot.GetPosition().Equals(actor.GetPosition()))
+                if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Gem gem = (Gem) actor;
-                    string message = gem.GetMessage();
-                    banner.SetText(message);
+                    //get point function for rocks
+                }
+            }
+
+            foreach (Actor actor in rocks)
+            {
+                if (player.GetPosition().Equals(actor.GetPosition()))
+                {
+                    Rock rock = (Rock) actor;
+                    //get point function for rocks
                 }
             }
         }
