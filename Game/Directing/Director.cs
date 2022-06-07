@@ -75,8 +75,9 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Gem gem = (Gem) actor;
-                    string message = gem.GetMessage();
-                    banner.SetText(message);
+                    // ToDo Remove actor from screen, send score to player, update score.
+                    //string message = gem.GetMessage();
+                    //banner.SetText(message);
                 }
             } 
 
@@ -85,8 +86,6 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Rock rock = (Rock) actor;
-                    string message = rock.GetMessage();
-                    banner.SetText(message);
                 }
             } 
         }
