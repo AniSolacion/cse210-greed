@@ -21,10 +21,8 @@ namespace Unit04
         private static int FONT_SIZE = 15;
         private static int COLS = 60;
         private static int ROWS = 40;
-        private static string CAPTION = "Robot Finds Kitten";
-        private static string DATA_PATH = "Data/messages.txt";
+        private static string CAPTION = "Greed";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int DEFAULT_ARTIFACTS = 40;
         private static int MAX_ROCKS = 25;
         private static int MAX_GEMS = 15;
 
@@ -38,7 +36,7 @@ namespace Unit04
             // create the cast
             Cast cast = new Cast();
 
-            // create the banner
+            // create the banner(Displays the points)
             Actor banner = new Actor();
             banner.SetText("");
             banner.SetFontSize(FONT_SIZE);
@@ -46,23 +44,19 @@ namespace Unit04
             banner.SetPosition(new Point(CELL_SIZE, 0));
             cast.AddActor("banner", banner);
 
-            // create the robot
-            Actor player = new Player();
+            // create the player
+            Player player = new Player();
             player.SetText("#");
             player.SetFontSize(FONT_SIZE);
             player.SetColor(WHITE);
             player.SetPosition(new Point(MAX_X / 2, MAX_Y - 15));
             cast.AddActor("player", player);
 
-            // load the messages
-            List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>();
-
-            // create the artifacts(Redo to be gems and rocks.)
+            // create the gems and rocks.
             Random random = new Random();
             for (int i = 0; i < MAX_GEMS; i++)
             {
                 string text = ((char)random.Next(33, 126)).ToString();
-                string message = messages[i];
 
                 int x = random.Next(1, COLS);
                 int y = 15;
@@ -79,12 +73,12 @@ namespace Unit04
                 gem.SetFontSize(FONT_SIZE);
                 gem.SetColor(color);
                 gem.SetPosition(position);
-                cast.AddActor("artifacts", gem);
+                cast.AddActor("gems", gem);
             }
+
             for (int i = 0; i < MAX_ROCKS; i++)
             {
                 string text = ((char)random.Next(33, 126)).ToString();
-                string message = messages[i];
 
                 int x = random.Next(1, COLS);
                 int y = 15;
@@ -94,13 +88,14 @@ namespace Unit04
                 
                 Color color = new Color(98, 52, 0);
 
-                Gem rock = new Rock();
+                Rock rock = new Rock();
                 rock.SetText(text);
                 rock.SetFontSize(FONT_SIZE);
                 rock.SetColor(color);
                 rock.SetPosition(position);
-                cast.AddActor("artifacts", rock);
+                cast.AddActor("rocks", rock);
             }
+
             // start the game
             KeyboardService keyboardService = new KeyboardService(CELL_SIZE);
             VideoService videoService 
