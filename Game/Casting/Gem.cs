@@ -4,7 +4,7 @@ namespace Unit04.Game.Casting
 {
     public class Gem : Actor
     {
-        private int score = 0;
+        private int score = 10;
 
         public Gem()
         {

@@ -2,11 +2,11 @@ using System;
 
 namespace Unit04.Game.Casting
 {
-    public class Player : Actor
+    public class Score
     {
-        private int score = 0;
+        private int score = 100;
 
-        public Player()
+        public Score()
         {
         }
 
@@ -15,7 +15,7 @@ namespace Unit04.Game.Casting
             return score;
         }
 
-        public void addScore(int score)
+        public void updateScore(int score)
         {
             this.score += score;
         }
