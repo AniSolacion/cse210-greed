@@ -61,20 +61,31 @@ namespace Unit04.Game.Directing
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
-            Actor robot = cast.GetFirstActor("robot");
-            List<Actor> artifacts = cast.GetActors("artifacts");
+            Actor player = cast.GetFirstActor("player");
+            List<Actor> gems = cast.GetActors("gems");
+            List<Actor> rocks = cast.GetActors("rocks");
 
             banner.SetText("");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
-            robot.MoveNext(maxX, maxY);
+            player.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in artifacts)
+            foreach (Actor actor in gems)
             {
-                if (robot.GetPosition().Equals(actor.GetPosition()))
+                if (player.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Artifact artifact = (Artifact) actor;
-                    string message = artifact.GetMessage();
+                    Gem gem = (Gem) actor;
+                    string message = gem.GetMessage();
+                    banner.SetText(message);
+                }
+            } 
+
+            foreach (Actor actor in rocks)
+            {
+                if (player.GetPosition().Equals(actor.GetPosition()))
+                {
+                    Rock rock = (Rock) actor;
+                    string message = rock.GetMessage();
                     banner.SetText(message);
                 }
             } 
