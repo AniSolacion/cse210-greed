@@ -44,50 +44,34 @@ namespace Unit04.Game.Directing
         }
 
         /// <summary>
-        /// Gets directional input from the keyboard and applies it to the robot.
+        /// Gets directional input from the keyboard and applies it to the player.
         /// </summary>
         /// <param name="cast">The given cast.</param>
         private void GetInputs(Cast cast)
         {
-            Actor robot = cast.GetFirstActor("robot");
+            Actor player = cast.GetFirstActor("player");
             Point velocity = keyboardService.GetDirection();
-            robot.SetVelocity(velocity);     
+            player.SetVelocity(velocity);   
+
+            // We'll probably do velocity for the rocks and gems here.  
+            // Velocity will be static since they will just be falling in one direction.
         }
 
         /// <summary>
-        /// Updates the robot's position and resolves any collisions with artifacts.
+        /// Updates the player's position and resolves any collisions with gems or rocks.
         /// </summary>
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
-            Actor robot = cast.GetFirstActor("robot");
-            List<Actor> artifacts = cast.GetActors("artifacts");
+            Actor player = cast.GetFirstActor("player");
+            List<Actor> gems = cast.GetActors("gems");
+            List<Actor> rocks = cast.GetActors("rocks");
 
             banner.SetText("");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
-            robot.MoveNext(maxX, maxY);
-
-            // foreach (Actor actor in artifacts)
-            // {
-            //     if (robot.GetPosition().Equals(actor.GetPosition()))
-            //     {
-            //         Artifact artifact = (Artifact) actor;
-            //         string message = artifact.GetMessage();
-            //         banner.SetText(message);
-            //     }
-            // } 
-
-            foreach (Actor actor in rock)
-            {
-                if (robot.GetPosition().Equals(actor.GetPosition()))
-                {
-                    Rock rock = (Rock) actor;
-                    string message = rock.GetMessage();
-                    banner.SetText(message);
-                }
-            }
+            player.MoveNext(maxX, maxY);
 
             foreach (Actor actor in gem)
             {
