@@ -36,12 +36,13 @@ namespace Unit04.Game.Directing
         public void StartGame(Cast cast)
         {
             videoService.OpenWindow();
-            while (videoService.IsWindowOpen())
+            while (score.getScore() >= 0)
             {
                 GetInputs(cast);
                 DoUpdates(cast);
                 DoOutputs(cast);
             }
+            videoService.DrawActor(cast.GetFirstActor("banner"));
             videoService.CloseWindow();
         }
 
@@ -92,6 +93,11 @@ namespace Unit04.Game.Directing
                     score.updateScore(rock.getScore());
                 }
             }
+            if (score.getScore() <= 0)
+            {
+                banner.SetText("Game Over");
+            }
+            
         }
 
         /// <summary>
