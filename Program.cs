@@ -95,7 +95,7 @@ namespace Unit04
                 rock.SetFontSize(FONT_SIZE);
                 rock.SetColor(color);
                 rock.SetPosition(position);
-                gem.SetVelocity(VELOCITY);
+                rock.SetVelocity(VELOCITY);
                 cast.AddActor("rocks", rock);
             }
 

@@ -82,7 +82,7 @@ namespace Unit04.Game.Directing
                     cast.RemoveActor("gems", gem);
                 }
 
-                if (actor.GetPosition().GetY <= 0)
+                if (actor.GetPosition().GetY() <= maxY)
                 {
                     Gem gem = (Gem) actor;
                     cast.RemoveActor("gems", gem);
@@ -95,6 +95,12 @@ namespace Unit04.Game.Directing
                 {
                     Rock rock = (Rock) actor;
                     score.updateScore(rock.getScore());
+                }
+
+                if (actor.GetPosition().GetY() <= maxY)
+                {
+                    Rock rock = (Rock) actor;
+                    cast.RemoveActor("gems", rock);
                 }
             }
             if (score.getScore() <= 0)
