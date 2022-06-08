@@ -23,8 +23,9 @@ namespace Unit04
         private static int ROWS = 40;
         private static string CAPTION = "Greed";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int MAX_ROCKS = 25;
-        private static int MAX_GEMS = 15;
+        private static Point VELOCITY = new Point(0, 12);
+        private static int MAX_ROCKS = 7;
+        private static int MAX_GEMS = 3;
 
 
         /// <summary>
@@ -69,10 +70,11 @@ namespace Unit04
                 Color color = new Color(r, g, b);
 
                 Gem gem = new Gem();
-                gem.SetText(text);
+                gem.SetText(Convert.ToChar(42).ToString());
                 gem.SetFontSize(FONT_SIZE);
                 gem.SetColor(color);
                 gem.SetPosition(position);
+                gem.SetVelocity(VELOCITY);
                 cast.AddActor("gems", gem);
             }
 
@@ -89,10 +91,11 @@ namespace Unit04
                 Color color = new Color(98, 52, 0);
 
                 Rock rock = new Rock();
-                rock.SetText(text);
+                rock.SetText(Convert.ToChar(129).ToString());
                 rock.SetFontSize(FONT_SIZE);
                 rock.SetColor(color);
                 rock.SetPosition(position);
+                rock.SetVelocity(VELOCITY);
                 cast.AddActor("rocks", rock);
             }
 

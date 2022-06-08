@@ -55,9 +55,6 @@ namespace Unit04.Game.Directing
             Actor player = cast.GetFirstActor("player");
             Point velocity = keyboardService.GetDirection();
             player.SetVelocity(velocity);   
-
-            // We'll probably do velocity for the rocks and gems here.  
-            // Velocity will be static since they will just be falling in one direction.
         }
 
         /// <summary>
@@ -82,6 +79,13 @@ namespace Unit04.Game.Directing
                 {
                     Gem gem = (Gem) actor;
                     score.updateScore(gem.getScore());
+                    cast.RemoveActor("gems", gem);
+                }
+
+                if (actor.GetPosition().GetY() <= maxY)
+                {
+                    Gem gem = (Gem) actor;
+                    cast.RemoveActor("gems", gem);
                 }
             }
 
@@ -91,6 +95,12 @@ namespace Unit04.Game.Directing
                 {
                     Rock rock = (Rock) actor;
                     score.updateScore(rock.getScore());
+                }
+
+                if (actor.GetPosition().GetY() <= maxY)
+                {
+                    Rock rock = (Rock) actor;
+                    cast.RemoveActor("gems", rock);
                 }
             }
             if (score.getScore() <= 0)
