@@ -25,6 +25,7 @@ namespace Unit04
         private static Color WHITE = new Color(255, 255, 255);
         private static int MAX_ROCKS = 25;
         private static int MAX_GEMS = 15;
+        private static Point VELOCITY = new Point(0, 12);
 
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace Unit04
                 gem.SetFontSize(FONT_SIZE);
                 gem.SetColor(color);
                 gem.SetPosition(position);
+                gem.SetVelocity(VELOCITY);
                 cast.AddActor("gems", gem);
             }
 
@@ -93,6 +95,7 @@ namespace Unit04
                 rock.SetFontSize(FONT_SIZE);
                 rock.SetColor(color);
                 rock.SetPosition(position);
+                gem.SetVelocity(VELOCITY);
                 cast.AddActor("rocks", rock);
             }
 
