@@ -107,6 +107,14 @@ namespace Unit04.Game.Directing
             counter += 12;
             if (counter %48 == 0)
             {
+                foreach (Actor gem in gems) 
+                {
+                    gem.MoveNext(maxX, maxY);
+                }
+                foreach (Actor rock in rocks)
+                {
+                    rock.MoveNext(maxX, maxY);
+                }
                 //spawn new space things
                 
             }
