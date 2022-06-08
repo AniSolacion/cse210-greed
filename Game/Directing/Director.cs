@@ -18,6 +18,8 @@ namespace Unit04.Game.Directing
 
         public Score score;
 
+        public int counter;
+
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
@@ -41,6 +43,7 @@ namespace Unit04.Game.Directing
                 GetInputs(cast);
                 DoUpdates(cast);
                 DoOutputs(cast);
+
             }
             videoService.DrawActor(cast.GetFirstActor("banner"));
             videoService.CloseWindow();
@@ -97,7 +100,12 @@ namespace Unit04.Game.Directing
             {
                 banner.SetText("Game Over");
             }
-            
+            counter += 12;
+            if (counter %48 == 0)
+            {
+                //spawn new space things
+                
+            }
         }
 
         /// <summary>
