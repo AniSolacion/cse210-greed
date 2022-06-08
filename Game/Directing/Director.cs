@@ -18,8 +18,6 @@ namespace Unit04.Game.Directing
 
         public Score score;
 
-        public int counter;
-
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
@@ -43,7 +41,6 @@ namespace Unit04.Game.Directing
                 GetInputs(cast);
                 DoUpdates(cast);
                 DoOutputs(cast);
-
             }
             videoService.DrawActor(cast.GetFirstActor("banner"));
             videoService.CloseWindow();
@@ -85,7 +82,7 @@ namespace Unit04.Game.Directing
                     cast.RemoveActor("gems", gem);
                 }
 
-                if (actor.GetPosition().GetY <= 0)
+                if (actor.GetPosition().GetY() <= maxY)
                 {
                     Gem gem = (Gem) actor;
                     cast.RemoveActor("gems", gem);
@@ -99,25 +96,18 @@ namespace Unit04.Game.Directing
                     Rock rock = (Rock) actor;
                     score.updateScore(rock.getScore());
                 }
+
+                if (actor.GetPosition().GetY() <= maxY)
+                {
+                    Rock rock = (Rock) actor;
+                    cast.RemoveActor("gems", rock);
+                }
             }
             if (score.getScore() <= 0)
             {
                 banner.SetText("Game Over");
             }
-            counter += 12;
-            if (counter %48 == 0)
-            {
-                foreach (Actor gem in gems) 
-                {
-                    gem.MoveNext(maxX, maxY);
-                }
-                foreach (Actor rock in rocks)
-                {
-                    rock.MoveNext(maxX, maxY);
-                }
-                //spawn new space things
-                
-            }
+            
         }
 
         /// <summary>
