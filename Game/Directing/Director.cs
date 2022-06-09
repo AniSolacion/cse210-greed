@@ -36,7 +36,7 @@ namespace Unit04.Game.Directing
         public void StartGame(Cast cast)
         {
             videoService.OpenWindow();
-            while (score.getScore() >= 0)
+            while (videoService.IsWindowOpen() && score.getScore() >= 0)
             {
                 GetInputs(cast);
                 DoUpdates(cast);
