@@ -16,7 +16,7 @@ namespace Unit04.Game.Directing
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
 
-        public Score score;
+        public Score score = new Score();
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
@@ -76,10 +76,13 @@ namespace Unit04.Game.Directing
 
             foreach (Actor actor in gems)
             {
+                // Move
+                Gem gem = (Gem) actor;
+                gem.MoveNext(maxX, maxY);
+
                 // Check if touched player.
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Gem gem = (Gem) actor;
                     score.updateScore(gem.getScore());
                     cast.RemoveActor("gems", gem);
                     Point new_pos = new Point(random.Next(0, maxX), -1);
@@ -87,9 +90,8 @@ namespace Unit04.Game.Directing
                 }
 
                 // Check if reached bottom.
-                if (actor.GetPosition().GetY() <= maxY)
+                if (actor.GetPosition().GetY() >= maxY)
                 {
-                    Gem gem = (Gem) actor;
                     Point new_pos = new Point(random.Next(0, maxX), -1);
                     gem.SetPosition(new_pos);
                 }
@@ -97,19 +99,21 @@ namespace Unit04.Game.Directing
 
             foreach (Actor actor in rocks)
             {
+                // Move
+                 Rock rock = (Rock) actor;
+                 rock.MoveNext(maxX, maxY);
+
                 // Check if touched player.
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Rock rock = (Rock) actor;
                     score.updateScore(rock.getScore());
                     Point new_pos = new Point(random.Next(0, maxX), -1);
                     rock.SetPosition(new_pos);
                 }
 
                 // Check if reached bottom.
-                if (actor.GetPosition().GetY() <= maxY)
+                if (actor.GetPosition().GetY() >= maxY)
                 {
-                    Rock rock = (Rock) actor;
                     Point new_pos = new Point(random.Next(0, maxX), -1);
                     rock.SetPosition(new_pos);
                 }
