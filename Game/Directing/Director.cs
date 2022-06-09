@@ -63,6 +63,7 @@ namespace Unit04.Game.Directing
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast)
         {
+            Random random = new Random();
             Actor banner = cast.GetFirstActor("banner");
             Actor player = cast.GetFirstActor("player");
             List<Actor> gems = cast.GetActors("gems");
@@ -75,32 +76,42 @@ namespace Unit04.Game.Directing
 
             foreach (Actor actor in gems)
             {
+                // Check if touched player.
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Gem gem = (Gem) actor;
                     score.updateScore(gem.getScore());
                     cast.RemoveActor("gems", gem);
+                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    gem.SetPosition(new_pos);
                 }
 
+                // Check if reached bottom.
                 if (actor.GetPosition().GetY() <= maxY)
                 {
                     Gem gem = (Gem) actor;
-                    cast.RemoveActor("gems", gem);
+                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    gem.SetPosition(new_pos);
                 }
             }
 
             foreach (Actor actor in rocks)
             {
+                // Check if touched player.
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Rock rock = (Rock) actor;
                     score.updateScore(rock.getScore());
+                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    rock.SetPosition(new_pos);
                 }
 
+                // Check if reached bottom.
                 if (actor.GetPosition().GetY() <= maxY)
                 {
                     Rock rock = (Rock) actor;
-                    cast.RemoveActor("gems", rock);
+                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    rock.SetPosition(new_pos);
                 }
             }
             if (score.getScore() <= 0)
