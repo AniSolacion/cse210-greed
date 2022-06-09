@@ -118,9 +118,6 @@ namespace Unit04.Game.Directing
             {
                 banner.SetText("Game Over");
             }
-            cast.AddActor("rock", rock);
-            cast.AddActor("rock", gem);
-            
         }
 
         /// <summary>
