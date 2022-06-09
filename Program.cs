@@ -24,8 +24,8 @@ namespace Unit04
         private static string CAPTION = "Greed";
         private static Color WHITE = new Color(255, 255, 255);
         private static Point VELOCITY = new Point(0, 12);
-        private static int MAX_ROCKS = 7;
-        private static int MAX_GEMS = 3;
+        private static int MAX_ROCKS = 70;
+        private static int MAX_GEMS = 30;
 
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Unit04
                 string text = ((char)random.Next(33, 126)).ToString();
 
                 int x = random.Next(1, COLS);
-                int y = 15;
+                int y = random.Next(-MAX_Y,-1);
                 Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
@@ -83,7 +83,7 @@ namespace Unit04
                 string text = ((char)random.Next(33, 126)).ToString();
 
                 int x = random.Next(1, COLS);
-                int y = 15;
+                int y = random.Next(-MAX_Y,-1);
                 Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
