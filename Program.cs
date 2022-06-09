@@ -91,7 +91,7 @@ namespace Unit04
                 Color color = new Color(98, 52, 0);
 
                 Rock rock = new Rock();
-                rock.SetText(Convert.ToChar(129).ToString());
+                rock.SetText(Convert.ToChar(48).ToString());
                 rock.SetFontSize(FONT_SIZE);
                 rock.SetColor(color);
                 rock.SetPosition(position);

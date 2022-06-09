@@ -84,7 +84,6 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     score.updateScore(gem.getScore());
-                    cast.RemoveActor("gems", gem);
                     Point new_pos = new Point(random.Next(0, maxX), -1);
                     gem.SetPosition(new_pos);
                 }
