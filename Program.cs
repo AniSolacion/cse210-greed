@@ -88,7 +88,7 @@ namespace Unit04
                 position = position.Scale(CELL_SIZE);
 
                 
-                Color color = new Color(98, 52, 0);
+                Color color = new Color(255, 153, 0);
 
                 Rock rock = new Rock();
                 rock.SetText(Convert.ToChar(48).ToString());
