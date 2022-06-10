@@ -86,14 +86,25 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     score.updateScore(gem.getScore());
-                    Point new_pos = new Point(random.Next(0, maxX), -1);
+
+                    //Creates uniformed position
+                    int ran = random.Next(1,maxX);
+                    int rem = ran % 15;
+                    int x = ran - rem;
+
+                    Point new_pos = new Point(x, 0);
                     gem.SetPosition(new_pos);
                 }
 
                 // Check if reached bottom.
                 if (actor.GetPosition().GetY() >= maxY)
                 {
-                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    //Creates uniformed position
+                    int ran = random.Next(1,maxX);
+                    int rem = ran % 15;
+                    int x = ran - rem;
+
+                    Point new_pos = new Point(x, 0);
                     gem.SetPosition(new_pos);
                 }
             }
@@ -108,14 +119,25 @@ namespace Unit04.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     score.updateScore(rock.getScore());
-                    Point new_pos = new Point(random.Next(0, maxX), -1);
+
+                    //Creates uniformed position
+                    int ran = random.Next(1,maxX);
+                    int rem = ran % 15;
+                    int x = ran - rem;
+
+                    Point new_pos = new Point(x, 0);
                     rock.SetPosition(new_pos);
                 }
 
                 // Check if reached bottom.
                 if (actor.GetPosition().GetY() >= maxY)
                 {
-                    Point new_pos = new Point(random.Next(0, maxX), -1);
+                    //Creates uniformed position
+                    int ran = random.Next(1,maxX);
+                    int rem = ran % 15;
+                    int x = ran - rem;
+
+                    Point new_pos = new Point(x, 0);
                     rock.SetPosition(new_pos);
                 }
             }
